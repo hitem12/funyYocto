@@ -28,6 +28,7 @@ RUN apt-get install -y unzip
 RUN apt-get install -y wget
 RUN apt-get install -y xz-utils
 RUN apt-get install -y zstd
+RUN apt-get install -y python3-websockets
 # install packages needed for build project documentation
 #RUN apt install -y  git librsvg2-bin locales make python3-saneyaml python3-saneyaml python3-sphinx-rtd-theme sphinx
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
@@ -59,7 +60,7 @@ RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
 RUN mkdir -p ${BUILD_OUTPUT_DIR}/build/conf
 
 WORKDIR $BUILD_OUTPUT_DIR
-# ENV TEMPLATECONF=${BUILD_INPUT_DIR}/${PROJECT}/sources/meta-$PROJECT/custom
+ENV TEMPLATECONF=${BUILD_INPUT_DIR}/meta-funy/templates
 
-# CMD source ${BUILD_INPUT_DIR}/${PROJECT}/sources/poky/oe-init-build-env \
+# CMD source ${BUILD_INPUT_DIR}/meta-funy/conf/templates/test-1
 #     build && bitbake $PROJECT-image
