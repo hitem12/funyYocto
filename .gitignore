@@ -1,4 +1,6 @@
-tmp/*
-cache/*
+tmp/
+cache/
 pyshtables.py
 *.log
+.vscode/
+__pycache__/
