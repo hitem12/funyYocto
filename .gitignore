@@ -1,0 +1,4 @@
+tmp/*
+cache/*
+pyshtables.py
+*.log
