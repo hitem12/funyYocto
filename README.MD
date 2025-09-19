@@ -6,3 +6,6 @@
 . /poky/oe-init-build-env
 bitbake core-image-base
 ```
+
+
+yocto image is stored in home/funy/tmp/deploy/images/raspberrypi0-wifi

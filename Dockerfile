@@ -60,7 +60,7 @@ RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
 RUN mkdir -p ${BUILD_OUTPUT_DIR}/build/conf
 
 WORKDIR $BUILD_OUTPUT_DIR
-ENV TEMPLATECONF=${BUILD_INPUT_DIR}/meta-funy/templates
+ENV TEMPLATECONF=${BUILD_INPUT_DIR}/meta-funy/conf/templates/test-1
 
 # CMD source ${BUILD_INPUT_DIR}/meta-funy/conf/templates/test-1
 #     build && bitbake $PROJECT-image
