@@ -4,3 +4,9 @@ pyshtables.py
 *.log
 .vscode/
 __pycache__/
+*.lock
+*.sock
+conf/
+downloads/
+image*/
+sstate-cache/
