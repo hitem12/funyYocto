@@ -9,3 +9,10 @@ bitbake core-image-base
 
 
 yocto image is stored in home/funy/tmp/deploy/images/raspberrypi0-wifi
+
+
+To use qemu on windows you need to use WSL
+Project directory shoul not be on windows directory
+
+
+TODO: Move pack folder potrzebuje uprawnien
