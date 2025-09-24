@@ -8,5 +8,4 @@ __pycache__/
 *.sock
 conf/
 downloads/
-image*/
 sstate-cache/
