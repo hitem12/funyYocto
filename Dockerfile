@@ -32,6 +32,7 @@ RUN apt-get install -y python3-websockets
 # needed by run qemu 
 RUN apt-get install -y iproute2
 RUN apt-get install -y sudo 
+RUN apt-get install -y iptables
 # install packages needed for build project documentation
 #RUN apt install -y  git librsvg2-bin locales make python3-saneyaml python3-saneyaml python3-sphinx-rtd-theme sphinx
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
@@ -54,8 +55,9 @@ ENV PROJECT=${PROJECT_NAME}
 ARG host_uid=1001
 ARG host_gid=1001
 RUN groupadd -g $host_gid $USER_NAME && \
-    useradd -g $host_gid -m -s /bin/bash -p ${USER_NAME} -u $host_uid $USER_NAME 
+    useradd -g $host_gid -m -s /bin/bash -u $host_uid $USER_NAME 
 RUN  adduser ${USER_NAME} sudo
+RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${USER_NAME}
 
 ENV BUILD_INPUT_DIR=/home/$USER_NAME/yocto/input

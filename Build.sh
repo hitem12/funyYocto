@@ -13,5 +13,5 @@ funy
 
 
 
-docker exec -u 0 $my_docker chown -R $docker_username:$docker_username $output_path
-docker exec -u 0 $my_docker chown -R $docker_username:$docker_username $input_path
+# docker exec -u 0 $my_docker chown -R $docker_username:$docker_username $output_path
+# docker exec -u 0 $my_docker chown -R $docker_username:$docker_username $input_path
