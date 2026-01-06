@@ -283,3 +283,12 @@ BB_SIGNATURE_HANDLER = "OEEquivHash"
 CONF_VERSION = "2"
 
 LICENSE_FLAGS_ACCEPTED = 'synaptics-killswitch'
+ENABLE_I2C = "1"
+# KERNEL_MODULE_AUTOLOAD:rpi += "i2c-dev i2c-bcm2708"
+KERNEL_MODULE_AUTOLOAD:rpi += "i2c-dev spidev spi-tools"
+RPI_KERNEL_DEVICETREE_OVERLAYS += "overlays/spi0-1cs.dtbo"
+
+ENABLE_SPI_BUS = "1"
+
+# DEBUG_REMOTE_IP = "192.168.0.100"
+# DEBUG_REMOTE_PORT = "1234"

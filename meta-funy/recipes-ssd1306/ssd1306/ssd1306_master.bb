@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=d41d8cd98f00b204e9800998ecf8427e"
 SRC_URI = "git://github.com/hitem12/ssd1306.git;branch=master;protocol=https"
 inherit cmake 
 
-DEPENDS = "i2c-tools cli11"
-RDEPENDS_${PN} = "i2c-tools(>=4.4) cli11"
+DEPENDS = "i2c-tools cli11 freetype"
+RDEPENDS_${PN} = "i2c-tools(>=4.4)"
 
 EXTRA_OECMAKE += "-DCMAKE_CXX_STANDARD=20"

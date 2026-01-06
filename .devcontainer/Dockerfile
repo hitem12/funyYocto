@@ -46,7 +46,8 @@ RUN scripts/install-buildtools \
   --release yocto-5.2.2 \
   --installer-version 5.2.2
 # RUN source oe-init-build-env
-RUN git clone https://github.com/agherzan/meta-raspberrypi
+# RUN git clone https://github.com/agherzan/meta-raspberrypi
+
 # supported by https://embeddeduse.com/2019/02/11/using-docker-containers-for-yocto-builds/
 RUN rm /bin/sh && ln -s bash /bin/sh
 
@@ -59,14 +60,16 @@ RUN groupadd -g $host_gid $USER_NAME && \
 RUN  adduser ${USER_NAME} sudo
 RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${USER_NAME}
+ENV WORKDIR=/home/$USER_NAME/yocto
+RUN mkdir -p $WORKDIR
 
-ENV BUILD_INPUT_DIR=/home/$USER_NAME/yocto/input
-ENV BUILD_OUTPUT_DIR=/home/$USER_NAME/yocto/output
-RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
-RUN mkdir -p ${BUILD_OUTPUT_DIR}/build/conf
+# ENV BUILD_INPUT_DIR=/home/$USER_NAME/yocto/input
+# ENV BUILD_OUTPUT_DIR=/home/$USER_NAME/yocto/output
+# RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
+# RUN mkdir -p ${BUILD_OUTPUT_DIR}/build/conf
 
-WORKDIR $BUILD_OUTPUT_DIR
-ENV TEMPLATECONF=${BUILD_INPUT_DIR}/meta-funy/conf/templates/test-1
+WORKDIR $WORKDIR
+ENV TEMPLATECONF=${WORKDIR}/meta-funy/conf/templates/default
 
 # CMD source ${BUILD_INPUT_DIR}/meta-funy/conf/templates/test-1
 #     build && bitbake $PROJECT-image
