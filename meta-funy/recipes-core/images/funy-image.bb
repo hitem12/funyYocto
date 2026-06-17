@@ -12,16 +12,16 @@ IMAGE_FEATURES += " \
     package-management \
     " 
 IMAGE_INSTALL:append = " \
-    i2c-tools \
     dhcpcd \
     python3 \
     python3-pip \
     python-luma.oled \
     ssd1306 \
     fontconfig \
-    kernel-module-spidev \
     "
 
+#        i2c-tools \
+#     kernel-module-spidev \
 # Install debugging tools
 IMAGE_INSTALL:append = " gdb gdbserver "
 

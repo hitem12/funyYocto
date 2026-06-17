@@ -6,7 +6,8 @@ pyshtables.py
 __pycache__/
 *.lock
 *.sock
-conf/
+
 downloads/
 sstate-cache/
 wpa_suplificant.conf
+build/

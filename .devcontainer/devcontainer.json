@@ -1,51 +1,54 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "yocto_builder",
-	"image": "funy:latest",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "build" : {
-	// 	"dockerFile": "./Dockerfile"
-	// },
-  	"remoteUser": "funy",
-	"workspaceFolder": "/home/funy/yocto",
-	"mounts": [
-		"source=${localWorkspaceFolder},target=/home/funy/yocto,type=bind,consistency=cached"
-		// "source=${localWorkspaceFolder},target=/home/funy/yocto/output/build,type=bind,consistency=cached"
-	],
-	"runArgs": [
-		"--device=/dev/net/tun:/dev/net/tun",
-		"--cap-add=NET_ADMIN"
-  	],
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"yocto-project.yocto-bitbake",
-				"mads-hartmann.bash-ide-vscode",
-				"ms-python.python"
-			],
-			"settings": {
-				"files.associations": {
-					"*.conf": "bitbake",
-					"*.inc": "bitbake"
-				}
-		}
+  "name": "yocto_builder",
+  // "image": "funy:latest",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+
+  "dockerFile": "./Dockerfile",
+
+  "remoteUser": "funy",
+  "updateRemoteUserUID": true,
+  "workspaceFolder": "/home/funy/yocto",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/home/funy/yocto,type=bind,consistency=cached"
+    // "source=${localWorkspaceFolder},target=/home/funy/yocto/output/build,type=bind,consistency=cached"
+  ],
+  "runArgs": [
+    "--device=/dev/net/tun:/dev/net/tun", 
+    "--cap-add=NET_ADMIN",
+    "--memory=12g",
+    "--memory-swap=12g"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yocto-project.yocto-bitbake",
+        "mads-hartmann.bash-ide-vscode",
+        "ms-python.python"
+      ],
+      "settings": {
+        "files.associations": {
+          "*.conf": "bitbake",
+          "*.inc": "bitbake"
+        }
       }
     }
-  	// "postCreateCommand": "echo 'source sources/poky/oe-init-build-env build' >> ~/.bashrc"
+  }
+  // "postCreateCommand": "echo 'source sources/poky/oe-init-build-env build' >> ~/.bashrc"
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "uname -a",
 
-	// Configure tool-specific properties.
-	// "customizations": {},
+  // Configure tool-specific properties.
+  // "customizations": {},
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }

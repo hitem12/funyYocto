@@ -37,18 +37,19 @@ RUN apt-get install -y iptables
 #RUN apt install -y  git librsvg2-bin locales make python3-saneyaml python3-saneyaml python3-sphinx-rtd-theme sphinx
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
 RUN locale-gen
-RUN git clone git://git.yoctoproject.org/poky
-WORKDIR /poky
-RUN git checkout master
-RUN scripts/install-buildtools \
-  --without-extended-buildtools \
-  --base-url https://downloads.yoctoproject.org/releases/yocto \
-  --release yocto-5.2.2 \
-  --installer-version 5.2.2
+# RUN git clone git://git.yoctoproject.org/poky
+# WORKDIR /poky
+# RUN git checkout master
+# RUN scripts/install-buildtools \
+#   --without-extended-buildtools \
+#   --base-url https://downloads.yoctoproject.org/releases/yocto \
+#   --release yocto-5.2.2 \
+#   --installer-version 5.2.2
 # RUN source oe-init-build-env
 # RUN git clone https://github.com/agherzan/meta-raspberrypi
 
 # supported by https://embeddeduse.com/2019/02/11/using-docker-containers-for-yocto-builds/
+RUN if id -u ubuntu >/dev/null 2>&1; then userdel -r ubuntu; fi
 RUN rm /bin/sh && ln -s bash /bin/sh
 
 ENV USER_NAME=${PROJECT_NAME}

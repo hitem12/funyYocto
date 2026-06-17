@@ -34,8 +34,8 @@
 #MACHINE ?= "genericx86-64"
 #
 # This sets the default machine to be qemux86-64 if no other machine is selected:
-#MACHINE ??= "qemux86-64"
-MACHINE ?= "raspberrypi0-wifi"
+MACHINE ??= "qemux86-64"
+#MACHINE ?= "raspberrypi0-wifi"
 # These are some of the more commonly used values. Looking at the files in the
 # meta/conf/machine directory, or the conf/machine directory of any additional layers
 # you add in will show all the available machines.
@@ -292,3 +292,4 @@ ENABLE_SPI_BUS = "1"
 
 # DEBUG_REMOTE_IP = "192.168.0.100"
 # DEBUG_REMOTE_PORT = "1234"
+BBMULTICONFIG = "quemu_x64 raspberrypi0-wifi quemuarm64"
